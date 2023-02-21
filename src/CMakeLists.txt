@@ -39,6 +39,7 @@ if (NOT PERIPHERALMAN)
     ${mraa_LIB_SRCS_NOAUTO}
     ${PROJECT_SOURCE_DIR}/src/iio/iio.c
   )
+  set_source_files_properties(${PROJECT_SOURCE_DIR}/src/iio/iio.c PROPERTIES COMPILE_OPTIONS "-Wno-format-truncation")
 endif ()
 
 set (mraa_LIB_X86_SRCS_NOAUTO
@@ -51,15 +52,12 @@ set (mraa_LIB_X86_SRCS_NOAUTO
   ${PROJECT_SOURCE_DIR}/src/x86/intel_minnow_byt_compatible.c
   ${PROJECT_SOURCE_DIR}/src/x86/intel_sofia_3gr.c
   ${PROJECT_SOURCE_DIR}/src/x86/intel_cherryhills.c
+  ${PROJECT_SOURCE_DIR}/src/x86/intel_ilk.c
   ${PROJECT_SOURCE_DIR}/src/x86/up.c
-  ${PROJECT_SOURCE_DIR}/src/x86/up2.c
-  ${PROJECT_SOURCE_DIR}/src/x86/up2_pro.c
-  ${PROJECT_SOURCE_DIR}/src/x86/up2_6000.c
   ${PROJECT_SOURCE_DIR}/src/x86/intel_joule_expansion.c
   ${PROJECT_SOURCE_DIR}/src/x86/iei_tank.c
   ${PROJECT_SOURCE_DIR}/src/x86/adlink-ipi.c
-  ${PROJECT_SOURCE_DIR}/src/x86/up_xtreme.c
-  ${PROJECT_SOURCE_DIR}/src/x86/up_xtreme_i11.c
+  ${PROJECT_SOURCE_DIR}/src/x86/up_boards.c
 )
 
 message (STATUS "INFO - Adding support for platform ${MRAAPLATFORMFORCE}")
@@ -87,18 +85,12 @@ if (NOT ${MRAAPLATFORMFORCE} STREQUAL "ALL")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up.c)
   elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UP2")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up2.c)
-  elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UP2_PRO")
-    set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up2_pro.c)
-  elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UP2_6000")
-    set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up2_6000.c)
   elseif( ${MRAAPLATFORMFORCE} STREQUAL "MRAA_INTEL_JOULE_EXPANSION")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/intel_joule_expansion.c)
   elseif( ${MRAAPLATFORMFORCE} STREQUAL "MRAA_IEI_TANK")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/iei_tank.c)
   elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UPXTREME")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up_xtreme.c)
-  elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UPXTREME_I11")
-    set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up_xtreme_i11.c)  
   else ()
     message (FATAL_ERROR "Unknown x86 platform enabled!")
   endif ()
@@ -116,6 +108,9 @@ set (mraa_LIB_ARM_SRCS_NOAUTO
   ${PROJECT_SOURCE_DIR}/src/arm/de_nano_soc.c
   ${PROJECT_SOURCE_DIR}/src/arm/rockpi4.c
   ${PROJECT_SOURCE_DIR}/src/arm/adlink_ipi.c
+  ${PROJECT_SOURCE_DIR}/src/arm/siemens/iot2050.c
+  ${PROJECT_SOURCE_DIR}/src/arm/siemens/platform.c
+  ${PROJECT_SOURCE_DIR}/src/arm/siemens/platform_iot2050.c
 )
 
 set (mraa_LIB_MIPS_SRCS_NOAUTO

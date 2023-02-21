@@ -62,14 +62,13 @@ typedef enum {
     MRAA_MTK_LINKIT = 17,           /**< Mediatek MT7688 based Linkit boards */
     MRAA_MTK_OMEGA2 = 18,           /**< MT7688 based Onion Omega2 board */
     MRAA_IEI_TANK = 19,             /**< IEI Tank System*/
-    MRAA_ROCKPI4 = 20,              /**< Radxa ROCK PI 4 Models A/B */
+    MRAA_ROCKPI4 = 20,              /**< Radxa ROCK PI 4 Models A/B/C */
     MRAA_ADLINK_IPI = 21,           /**< Adlink Industrial PI */
     MRAA_ADLINK_LEC_AL = 22,        /**< Adlink LEC-AL*/
     MRAA_ADLINK_LEC_AL_AI = 23,        /**< Adlink LEC-AL*/
     MRAA_UPXTREME = 24,             /**< The UPXTREME Board */
-    MRAA_UPXTREME_I11 = 25,         /**< The UPXTREME i11 Board */
-    MRAA_UP2_PRO = 26,              /**< The UP^2 Pro Board */
-    MRAA_UP2_6000 = 27,              /**< The UP^2 6000 Board */
+    MRAA_INTEL_ILK = 25,            /**< Intel Learning Kit */
+    MRAA_SIEMENS_IOT2050 = 26,      /**< Siemens IOT2050 board */
     // USB platform extenders start at 256
     MRAA_FTDI_FT4222 = 256,         /**< FTDI FT4222 USB to i2c bridge */
 

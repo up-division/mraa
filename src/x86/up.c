@@ -227,7 +227,7 @@ mraa_up_board()
     b->aio_non_seq = 1;
     mraa_up_get_pin_index(b, "ADC0", (int*) &(b->aio_dev[0].pin));
 
-    const char* pinctrl_path = "/sys/bus/platform/drivers/up-pinctrl";
+    const char* pinctrl_path = "/sys/bus/platform/drivers/upboard-pinctrl";
     int have_pinctrl = access(pinctrl_path, F_OK) != -1;
     syslog(LOG_NOTICE, "up: kernel pinctrl driver %savailable", have_pinctrl ? "" : "un");
 

@@ -273,8 +273,7 @@ struct _iio {
 struct _led {
     /*@{*/
     int count; /**< total LED count in a platform */
-    char *led_name; /**< LED name */
-    char led_path[64]; /**< sysfs path of the LED */
+    const char *led_path; /**< sysfs path of the LED */
     int trig_fd; /**< trigger file descriptor */
     int bright_fd; /**< brightness file descriptor */
     int max_bright_fd; /**< maximum brightness file descriptor */
@@ -312,6 +311,19 @@ typedef enum {
     PINCMD_SKIP = 6             // just skip this command, do not apply pin and value
 } pincmd_t;
 
+
+/**
+ * Enum representing different mux register mode
+ */
+ typedef enum {
+     MUX_REGISTER_MODE_GPIO = 0,    /**< GPIO mode */
+     MUX_REGISTER_MODE_UART = 1,    /**< UART mode */
+     MUX_REGISTER_MODE_I2C = 2,     /**< I2C mode */
+     MUX_REGISTER_MODE_SPI = 3,     /**< SPI mode */
+     MUX_REGISTER_MODE_PWM = 4,     /**< PWM mode */
+     MUX_REGISTER_MODE_AIO = 5,     /**< AIO mode */
+     MAX_MUX_REGISTER_MODE
+ } mux_register_mode_t;
 
 /**
  * A Structure representing a multiplexer and the required value
